@@ -1,16 +1,35 @@
-<ngx-charts-bar-vertical
-  *ngIf="countries.length"
-  [scheme]="colorScheme"
-  [results]="countries"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel"
-  (select)="onSelect($event)">
-</ngx-charts-bar-vertical>
+
+<div>
+  <ngx-datatable
+  #mydatatable
+  class="material"
+  [headerHeight]="50"
+  [limit]="5"
+  [columnMode]="'force'"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [trackByProp]="'updated'"
+  [rows]="countries">
+  <ngx-datatable-column name="Country" prop="name"></ngx-datatable-column>
+  <ngx-datatable-column name="# Tweets" prop="value"></ngx-datatable-column>
+  </ngx-datatable>
+</div>
+<div>
+  <h2>Top 5 Countries By # Tweets</h2>
+  <ngx-charts-bar-vertical
+    *ngIf="countries.length"
+    [scheme]="colorScheme"
+    [results]="rows"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel">
+  </ngx-charts-bar-vertical>
+</div>
+<br>
 
 <router-outlet></router-outlet>

@@ -13,8 +13,12 @@ import { CountryData } from './models/countryData.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  search = '';
+  submittedSearch = '';
   tweets$: Observable<any>;
   countries: CountryData[] = [];
+  countryCodes: string[] = [];
+  rows: CountryData[] = [];
   // view: any[] = [700, 400];
   showXAxis = true;
   showYAxis = true;
@@ -48,10 +52,11 @@ export class AppComponent implements OnInit {
       } else {
         const newCountry = { name: countryCode, value: 1 };
         this.countries.push(newCountry);
+        this.countryCodes.push(countryCode);
       }
       this.countries = [...this.countries];
       this.countries.sort((a, b) => b.value - a.value);
+      this.rows = [...this.countries.slice(0, 5)];
     }
-    console.log('this.countries', this.countries);
   }
 }

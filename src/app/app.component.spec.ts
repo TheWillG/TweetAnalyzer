@@ -6,6 +6,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { StoreModule, Store } from '@ngrx/store';
 import { reducer } from './store/reducers/tweets';
 import { PubNubAngular } from 'pubnub-angular2';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -14,6 +15,7 @@ describe('AppComponent', () => {
         RouterTestingModule,
         BrowserAnimationsModule,
         NgxChartsModule,
+        NgxDatatableModule,
         StoreModule.forRoot({ tweets: reducer }),
       ],
       providers: [PubNubAngular, Store],

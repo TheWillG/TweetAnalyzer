@@ -6,6 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule, Store } from '@ngrx/store';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgxUIModule, ButtonModule } from '@swimlane/ngx-ui';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { reducer } from './store/reducers/tweets';
 
@@ -14,11 +16,14 @@ import { reducer } from './store/reducers/tweets';
     AppComponent
   ],
   imports: [
+    NgxDatatableModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     StoreModule.forRoot({ tweets: reducer }),
-    NgxChartsModule
+    NgxChartsModule,
+    NgxUIModule,
+    ButtonModule
   ],
   providers: [PubNubAngular, Store],
   bootstrap: [AppComponent]
