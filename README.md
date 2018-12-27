@@ -1,6 +1,8 @@
 # TweetAnalyzer
 
-Live tweet aggregator and analyzer
+Live tweet aggregator and analyzer via hashtag search.
+
+![Preview](docs/preview.png)
 
 ## Development server
 

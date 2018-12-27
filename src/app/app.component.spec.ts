@@ -7,6 +7,11 @@ import { StoreModule, Store } from '@ngrx/store';
 import { reducer } from './store/reducers/tweets';
 import { PubNubAngular } from 'pubnub-angular2';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgxUIModule } from '@swimlane/ngx-ui';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from '../environments/environment';
+
+const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,7 +21,9 @@ describe('AppComponent', () => {
         BrowserAnimationsModule,
         NgxChartsModule,
         NgxDatatableModule,
+        NgxUIModule,
         StoreModule.forRoot({ tweets: reducer }),
+        SocketIoModule.forRoot(config)
       ],
       providers: [PubNubAngular, Store],
       declarations: [

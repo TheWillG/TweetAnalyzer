@@ -10,6 +10,10 @@ import { NgxUIModule, ButtonModule } from '@swimlane/ngx-ui';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { reducer } from './store/reducers/tweets';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+import { environment } from '../environments/environment';
+
+const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
 
 @NgModule({
   declarations: [
@@ -23,7 +27,8 @@ import { reducer } from './store/reducers/tweets';
     StoreModule.forRoot({ tweets: reducer }),
     NgxChartsModule,
     NgxUIModule,
-    ButtonModule
+    ButtonModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [PubNubAngular, Store],
   bootstrap: [AppComponent]

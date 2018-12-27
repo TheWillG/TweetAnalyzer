@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  pubnubSubKey: 'sub-c-78806dd4-42a6-11e4-aed8-02ee2ddab7fe',
-  pubnubTweetChannel: 'pubnub-twitter'
+  socketUrl: 'http://localhost:4444'
 };
 
 /*
