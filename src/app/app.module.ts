@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { PubNubAngular } from 'pubnub-angular2';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule, Store } from '@ngrx/store';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
@@ -23,14 +21,13 @@ const config: SocketIoConfig = { url: environment.socketUrl, options: {} };
     NgxDatatableModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     StoreModule.forRoot({ tweets: reducer }),
     NgxChartsModule,
     NgxUIModule,
     ButtonModule,
     SocketIoModule.forRoot(config)
   ],
-  providers: [PubNubAngular, Store],
+  providers: [Store],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

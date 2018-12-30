@@ -1,6 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
-import { PubNubAngular } from 'pubnub-angular2';
-import { environment } from '../../environments/environment';
+import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Socket } from 'ngx-socket-io';
 
@@ -12,7 +10,7 @@ import * as tweetActions from '../store/actions/tweets';
 export class AppService {
   newTweetResponse = this.socket.fromEvent<any>('newTweet');
 
-  constructor(private pubnub: PubNubAngular, private store: Store<any>, private socket: Socket) { }
+  constructor(private store: Store<any>, private socket: Socket) { }
 
   async getTweets(filter = ''): Promise<void> {
     this.socket.disconnect();
