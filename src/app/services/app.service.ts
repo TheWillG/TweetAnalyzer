@@ -12,6 +12,11 @@ export class AppService {
 
   constructor(private store: Store<any>, private socket: Socket) { }
 
+  /**
+   * Emit new socket message to request tweets by hashtag filter.
+   * When new socket message received, dispatch NEW_TWEET action.
+   * @param filter string
+   */
   async getTweets(filter = ''): Promise<void> {
     this.socket.disconnect();
     this.socket.connect();

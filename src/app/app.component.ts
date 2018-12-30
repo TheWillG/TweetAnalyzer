@@ -34,6 +34,10 @@ export class AppComponent implements OnInit {
     });
   }
 
+  /**
+   * Incoming Tweet handler
+   * @param tweet Tweet
+   */
   handleTweet(tweet: any) {
     this.tweetList.push(tweet);
     this.tweetList = [...this.tweetList];
@@ -43,6 +47,10 @@ export class AppComponent implements OnInit {
     this.calculateLanguages(tweet);
   }
 
+  /**
+   * Use first and last tweet timestamps with # tweets to calculate an average tweets per minute (TPM).
+   * TPM = (# tweets) * (60 seconds / 1 min) / (tweet period in seconds)
+   */
   calculateTpm(): void {
     if (this.tweetList.length === 0) {
       this.tpm = 0;
@@ -57,6 +65,10 @@ export class AppComponent implements OnInit {
     }
   }
 
+  /**
+   * Deconstruct new tweet; update languages list by creating new lang or incrementing existing count
+   * @param tweet Tweet
+   */
   calculateLanguages(tweet: Tweet): void {
     const lang = tweet.lang;
     const existingLang = this.languages.find(l => l.name === lang);
@@ -70,6 +82,9 @@ export class AppComponent implements OnInit {
     this.languages.sort((a, b) => b.count - a.count);
   }
 
+  /**
+   * Save search input and send socket message to request new hashtag search
+   */
   fetchTweets() {
     this.tweetList = [];
     this.tweetPreviews = [];

@@ -16,6 +16,9 @@ const T = new Twit({
 
 let stream = null;
 
+/**
+ * When client connects, set up event handlers to process client messages and Twitter Tweet messages
+ */
 io.on("connection", socket => {
   if(stream) stream.stop();
   socket.on("getTweets", (filter = 'twitter') => {
