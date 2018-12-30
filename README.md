@@ -1,6 +1,6 @@
 # TweetAnalyzer
 
-Live tweet aggregator and analyzer via hashtag search.
+Real time tweet aggregator by language and previewer via hashtag search.
 
 ![Preview](docs/preview.png)
 
