@@ -6,6 +6,7 @@ import { tweets } from './store/reducers/tweets';
 import { AppService } from './services/app.service';
 import { Tweet } from './models/tweets.model';
 import { Language } from './models/languages.model';
+import { languageCodes } from './shared/languageCodes';
 
 
 @Component({
@@ -70,7 +71,12 @@ export class AppComponent implements OnInit {
    * @param tweet Tweet
    */
   calculateLanguages(tweet: Tweet): void {
-    const lang = tweet.lang;
+    let lang;
+    if (languageCodes[tweet.lang]) {
+      lang = languageCodes[tweet.lang].name;
+    } else {
+      lang = 'Unknown';
+    }
     const existingLang = this.languages.find(l => l.name === lang);
     if (existingLang) {
       existingLang.count += 1;
